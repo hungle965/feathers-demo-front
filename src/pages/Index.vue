@@ -1,7 +1,25 @@
 <script setup lang="ts">
-import { useMeta } from 'quasar'
-const metaData = { title: 'CTA Home' }
-useMeta(metaData)
+import { computed } from 'vue'
+import { useStore } from 'src/store'
+const store = useStore()
+
+const listTask = computed({
+  get: () => store.state.listTask.ListTask,
+  set: (val) => {
+    store.commit('list-task/addTask', val)
+  }
+})
+
+const handleAddTaskClick = () => {
+  store.commit('listTask/addTask', { id: listTask.value.length, name: '123' })
+}
 </script>
 
-<template><div>test</div></template>
+<template>
+  <button @click="handleAddTaskClick">add task</button>
+  <ul>
+    <li v-for="task in listTask" :key="task.id">
+      {{ task.id }} - {{ task.name }}
+    </li>
+  </ul>
+</template>
