@@ -11,7 +11,10 @@ const listTask = computed({
 })
 
 const handleAddTaskClick = () => {
-  store.commit('listTask/addTask', { id: listTask.value.length, name: '123' })
+  store.commit('listTask/addTask', {
+    id: listTask.value.length,
+    name: `name of task ${listTask.value.length + 1}`
+  })
 }
 </script>
 
