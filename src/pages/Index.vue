@@ -1,6 +1,9 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import ChatBox from 'src/components/ChatBox.vue'
+
 import { useStore } from 'src/store'
+import { computed } from 'vue'
+
 const store = useStore()
 
 const listTask = computed({
@@ -25,4 +28,5 @@ const handleAddTaskClick = () => {
       {{ task.id }} - {{ task.name }}
     </li>
   </ul>
+  <ChatBox />
 </template>
