@@ -36,8 +36,8 @@ const handleReset = () => {
   messages.remove(0)
 }
 
-messages.on('created', (mess: Message) => {
-  listData.value = [...listData.value, mess]
+messages.on('created', (mess: Message | unknown) => {
+  listData.value = [...listData.value, mess as Message]
 })
 
 messages.on('removed', () => {
