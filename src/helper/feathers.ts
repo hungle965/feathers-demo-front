@@ -7,10 +7,10 @@ const socket = io('http://localhost:3030', {
   transports: ['websocket']
 })
 
-const instance = feathers()
+const client = feathers()
+
+const instance = client
   .configure(socketio(socket))
   .configure(auth({ storage: window.localStorage }))
-
-// instance.service('/messages')
 
 export default instance
